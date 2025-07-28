@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Page title</title>
+   <style>
+      .input-group {
+  position: relative;
+  width: 200px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 8px;
+  font-size: 16px;
+}
+
+label {
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  color: #aaa;
+  pointer-events: none;
+  display: flex;
+}
+
+label span {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* On focus or filled input */
+input:focus + label span,
+input:not(:placeholder-shown) + label span {
+  color: #007bff;
+}
+
+input:focus + label span:nth-child(1) {
+  transform: translateY(-24px);
+  transition-delay: 0s;
+}
+input:focus + label span:nth-child(2) {
+  transform: translateY(-24px);
+  transition-delay: 0.05s;
+}
+input:focus + label span:nth-child(3) {
+  transform: translateY(-24px);
+  transition-delay: 0.1s;
+}
+input:focus + label span:nth-child(4) {
+  transform: translateY(-24px);
+  transition-delay: 0.15s;
+}
+   </style>
+</head>
+<body>
+   <div class="input-group">
+  <input type="text" id="name" required />
+  <label for="name">
+    <span>N</span><span>a</span><span>m</span><span>e</span>
+  </label>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Signup Form with Floating Label Animation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Container to hold input and label */
+    .input-group {
+      position: relative;
+    }
+
+    /* The input styles */
+    input {
+      @apply w-full px-4 py-3 text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition;
+      /* Placeholder trick: keep placeholder empty for :placeholder-shown */
+      /* placeholder=" " will be used */
+    }
+
+    /* Label styles */
+    label {
+      @apply absolute left-4 top-3 text-gray-500 pointer-events-none select-none flex space-x-0;
+      font-size: 1rem;
+      user-select: none;
+      transform-origin: left bottom;
+      transition: color 0.3s ease;
+    }
+
+    /* Each letter wrapped in span */
+    label span {
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+    }
+
+    /* Label active state - focus or filled */
+    input:focus + label span,
+    input:not(:placeholder-shown) + label span {
+      color: #2563eb; /* Tailwind blue-600 */
+      transform: translateY(-28px) scale(0.75);
+    }
+
+    /* Staggered animation delays for letters */
+    input:focus + label span:nth-child(1),
+    input:not(:placeholder-shown) + label span:nth-child(1) { transition-delay: 0s; }
+    input:focus + label span:nth-child(2),
+    input:not(:placeholder-shown) + label span:nth-child(2) { transition-delay: 0.05s; }
+    input:focus + label span:nth-child(3),
+    input:not(:placeholder-shown) + label span:nth-child(3) { transition-delay: 0.1s; }
+    input:focus + label span:nth-child(4),
+    input:not(:placeholder-shown) + label span:nth-child(4) { transition-delay: 0.15s; }
+    input:focus + label span:nth-child(5),
+    input:not(:placeholder-shown) + label span:nth-child(5) { transition-delay: 0.2s; }
+    input:focus + label span:nth-child(6),
+    input:not(:placeholder-shown) + label span:nth-child(6) { transition-delay: 0.25s; }
+    input:focus + label span:nth-child(7),
+    input:not(:placeholder-shown) + label span:nth-child(7) { transition-delay: 0.3s; }
+    input:focus + label span:nth-child(8),
+    input:not(:placeholder-shown) + label span:nth-child(8) { transition-delay: 0.35s; }
+    input:focus + label span:nth-child(9),
+    input:not(:placeholder-shown) + label span:nth-child(9) { transition-delay: 0.4s; }
+    input:focus + label span:nth-child(10),
+    input:not(:placeholder-shown) + label span:nth-child(10) { transition-delay: 0.45s; }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 min-h-screen flex items-center justify-center px-4">
+  <form
+    class="bg-gray-100 dark:bg-gray-900 max-w-md w-full rounded-xl shadow-xl p-8 space-y-8"
+    novalidate
+  >
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-100 text-center">
+      Create your account
+    </h2>
+
+    <!-- Input group component -->
+    <div class="input-group">
+      <input
+        id="username"
+        name="username"
+        type="text"
+        placeholder=" "
+        autocomplete="username"
+        required
+        minlength="3"
+        class="peer"
+      />
+      <label for="username">Username</label>
+      <p class="mt-1 text-sm text-red-600 hidden peer-invalid:block">Username must be at least 3 characters</p>
+    </div>
+
+    <div class="input-group">
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder=" "
+        autocomplete="email"
+        required
+        class="peer"
+      />
+      <label for="email">Email Address</label>
+      <p class="mt-1 text-sm text-red-600 hidden peer-invalid:block">Enter a valid email</p>
+    </div>
+
+    <div class="input-group">
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder=" "
+        required
+        minlength="6"
+        class="peer"
+        autocomplete="new-password"
+      />
+      <label for="password">Password</label>
+      <p class="mt-1 text-sm text-red-600 hidden peer-invalid:block">Password must be at least 6 characters</p>
+    </div>
+
+    <div class="input-group">
+      <input
+        id="confirm-password"
+        name="confirm-password"
+        type="password"
+        placeholder=" "
+        required
+        minlength="6"
+        class="peer"
+        autocomplete="new-password"
+      />
+      <label for="confirm-password">Confirm Password</label>
+      <p class="mt-1 text-sm text-red-600 hidden peer-invalid:block">
+        Please confirm your password
+      </p>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 text-white font-semibold rounded-md py-3 transition"
+    >
+      Sign Up
+    </button>
+  </form>
+
+  <script>
+    // Wrap each label letter in spans for staggered animation
+    document.querySelectorAll('label').forEach(label => {
+      const text = label.textContent.trim();
+      label.textContent = '';
+      [...text].forEach(char => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        label.appendChild(span);
+      });
+    });
+  </script>
+</body>
+</html>

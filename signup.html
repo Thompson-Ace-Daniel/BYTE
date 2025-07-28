@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Page title</title>
+</head>
+<body>
+   <form id="signupForm">
+  <input type="text" id="signupUsername" placeholder="Username" required />
+  <input type="email" id="signupEmail" placeholder="Email" required />
+  <input type="password" id="signupPassword" placeholder="Password" required />
+  <input type="password" id="signupConfirm" placeholder="Confirm Password" required />
+  <p id="passwordStrength"></p>
+  <button type="submit" id="submitButton" disabled>Sign Up</button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
+<script src="signup.js"></script>
+</body>
+</html>
